@@ -55,10 +55,10 @@ const GearUp = () => {
                                         height={400}
                                     />
                                     <div className='flex justify-between'>
-                                        <h3 className="mt-4 text-sm sm:text-base lg:text-lg font-medium">{mens.name}</h3>
-                                        <h3 className="mt-4 text-sm sm:text-base lg:text-lg font-medium">{mens.price}</h3>
+                                        <h3 className="mt-4 text-xs sm:text-sm font-helveticaBold font-medium">{mens.name}</h3>
+                                        <h3 className="mt-4 text-xs sm:text-sm font-helveticaBold font-medium">{mens.price}</h3>
                                     </div>
-                                    <p className="text-gray-600 text-sm sm:text-base lg:text-lg">{mens.category}</p>
+                                    <p className="text-gray-600 text-xs sm:text-xs lg:text-sm">{mens.category}</p>
                                 </div>
                             ))}
                         </div></div>
@@ -84,14 +84,13 @@ const GearUp = () => {
                                         height={400}
                                     />
                                     <div className='flex justify-between'>
-                                        <h3 className="mt-4 text-sm sm:text-base lg:text-lg font-medium">{women.name}</h3>
-                                        <h3 className="mt-4 text-sm sm:text-base lg:text-lg font-medium">{women.price}</h3>
+                                        <h3 className="mt-4 text-xs sm:text-sm font-helveticaBold font-medium">{women.name}</h3>
+                                        <h3 className="mt-4 text-xs sm:text-sm font-helveticaBold font-medium">{women.price}</h3>
                                     </div>
-                                    <p className="text-gray-600 text-sm sm:text-base lg:text-lg">{women.category}</p>
+                                    <p className="text-gray-600 text-xs sm:text-xs lg:text-sm">{women.category}</p>
                                 </div>
                             ))}
                         </div></div>
-                    
                 </div>
             </div>
         </section>
