@@ -34,12 +34,12 @@ const Links = () => {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold text-lg mb-4">Kids'</h3>
+            <h3 className="font-bold text-lg mb-4">Kids</h3>
             <ul className="space-y-2">
               <li className="text-gray-600">Infant & Toddler Shoes</li>
-              <li className="text-gray-600">Kids' Shoes</li>
-              <li className="text-gray-600">Kids' Jordan Shoes</li>
-              <li className="text-gray-600">Kids' Basketball Shoes</li>
+              <li className="text-gray-600">Kids Shoes</li>
+              <li className="text-gray-600">Kids Jordan Shoes</li>
+              <li className="text-gray-600">Kids Basketball Shoes</li>
             </ul>
           </div>
         </div>

@@ -51,7 +51,7 @@ const SignIn = () => {
             </div>
 
 <div>
-    <p className='text-xs text-center px-6 text-[#7E7E7E] mb-[25px]'>By logging in, you agree to Nike's <u>Privacy Policy</u> and <u>Terms of Use</u>.</p>
+    <p className='text-xs text-center px-6 text-[#7E7E7E] mb-[25px]'>{"By logging in, you agree to Nike's "}<u>Privacy Policy</u> and <u>Terms of Use</u>.</p>
 </div>
           <button
             type="submit"
