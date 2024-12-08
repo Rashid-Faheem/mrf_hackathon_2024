@@ -4,9 +4,10 @@ import React from 'react'
 
 const footer = () => {
   return (
-    <footer className="bg-black text-white pt-10 font-helvetica">
-        <div className=" mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-16 px-4 lg:px-24">
-          <div className="text-lg font-normal mb-6 flex flex-col text-[10px] leading-8">
+    <footer className="bg-black text-white pt-10 font-helvetica px-12">
+      <div className="lg:flex items-start justify-between">
+        <div className="  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16  ">
+          <div className="text-lg font-normal mb-6 flex flex-col text-[10px] gap-2 leading-8">
           {/* 1ST Section */}
           <h3 >FIND A STORE</h3>
             <h3 >BECOME A MEMBER</h3>
@@ -17,8 +18,8 @@ const footer = () => {
 
   
           {/* 2ND Section */}
-          <div className="text-xs font-normal mb-6 flex flex-col  leading-8">
-            <h3>GET HELP</h3>
+          <div className="text-xs font-normal mb-6 flex flex-col  leading-8 text-[#7E7E7E]">
+            <h3 className="text-white">GET HELP</h3>
             <h3>Order Status</h3>
             <h3>Delivery</h3>
             <h3>Returns</h3>
@@ -27,42 +28,45 @@ const footer = () => {
             <h3>Contact Us On All Other Inquiries</h3>
 
             </div>
-            {/* Account Section */}
-          <div>
-            <h3 className=" text-lg mb-6">Account</h3>
-            {/* <p className="mb-4"><a href="/" className="hover:text-gray-400">My Account</a></p>
-            <p className="mb-4"><Link href="/signup" > Login / Register</Link></p>
-            <p className="mb-4"><a href="/" className="hover:text-gray-400">Cart</a></p>
-            <p className="mb-4"><a href="/" className="hover:text-gray-400">Wishlist</a></p>
-            <p className="mb-4"><a href="/" className="hover:text-gray-400">Shop</a></p>
-           */}
-  </div>
-          {/* Quick Link Section */}
-          <div>
-            <h3 className=" text-lg mb-6">Quick Link</h3>
-            <p className="mb-4"><a href="/" className="hover:text-gray-400">Privacy Policy</a></p>
-            <p className="mb-4"><a href="/" className="hover:text-gray-400">Terms Of Use</a></p>
-            <p className="mb-4"><a href="/" className="hover:text-gray-400">FAQ</a></p>
-            <p className="mb-4"><a href="/" className="hover:text-gray-400">Contact</a></p>
-          </div>
-  
-          {/* Download App Section */}
-          <div>
-            <h3 className="text-lg mb-6">Download App</h3>
-            <p className="text-xs mb-2">Save $3 with App New User Only</p>
-            <img src="./img.png" alt="" />
-            <div className="flex gap-6 mt-4">
-            <FaFacebookF />
-            <FaTwitter />
-            <FaInstagram />
-            <FaLinkedin />
+            {/* 3rd Section */}
+            <div className="text-xs font-normal mb-6 flex flex-col  leading-8 text-[#7E7E7E]">
+            <h3 className="text-white">ABOUT NIKE</h3>
+            <h3>News</h3>
+            <h3>Careers</h3>
+            <h3>Investors</h3>
+            <h3>Sustainability</h3>
+
             </div>
+
+          {/* bLANK Section */}
+          <div>
           </div>
-        </div>
   
-        <div className="mt-8 border-t border-gray-700 pt-4 text-center text-[16px] pb-6 opacity-[40%]">
-          © Copyright Rimel 2022. All right reserved
+      
         </div>
+         {/* SOCIAL Section */}
+        <div className="flex gap-4 h-3">
+    <img src="./twitter.png" alt="" />
+    <img src="./facebook.png" alt="" />
+    <img src="./youtube.png" alt="" />
+    <img src="./instagram.png" alt="" />
+  </div> 
+        </div>
+        {/* next div Section */}
+
+<div className="flex justify-between text-[10px] text-[#7E7E7E] py-4">
+<div className="flex gap-2">
+  <img src="./ind.png" alt="" />
+<h3>© 2023 NIKE, Inc. All Rights Reserved</h3>
+</div>
+<div className="flex gap-4">
+<h3>Guides</h3>
+<h3>Terms of Sale</h3>
+<h3>Terms of Use</h3>
+<h3>Nike Privacy Policy</h3>
+</div>
+</div>
+
       </footer>
   )
 }
