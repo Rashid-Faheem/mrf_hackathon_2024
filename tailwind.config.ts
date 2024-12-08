@@ -8,7 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      
+      fontFamily : {
+        helvetica : ["var(--font-helvetica)"]
+      }
     },
   },
   plugins: [],
