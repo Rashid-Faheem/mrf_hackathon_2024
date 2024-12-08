@@ -20,7 +20,7 @@ const header = () => {
                     <p>|</p>
                 </div>
                 <div className='flex items-center gap-[15.38px] '>
-                    <p>Sign In</p>
+                    <Link href="/signin"><p>Sign In</p></Link>     
                 </div>
             </div>
         </div>

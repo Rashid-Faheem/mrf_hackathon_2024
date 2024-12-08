@@ -19,6 +19,11 @@ const Helvetica = localFont({
   variable: "--font-helvetica",
   weight: "100 900",
 });
+const HelveticaBold = localFont({
+  src: "./fonts/Helvetica-Bold.woff",
+  variable: "--font-helvetica-bold",
+  weight: "100 900",
+});
 
 export default function RootLayout({
   children,
@@ -27,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${Helvetica.variable } `  } >
+      <body className={`${inter.className} ${Helvetica.variable } ${HelveticaBold.variable}`  } >
         <Header />
         {children}
         </body>
