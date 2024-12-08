@@ -7,7 +7,7 @@ const footer = () => {
     <footer className="bg-black text-white pt-10 font-helvetica px-12">
       <div className="lg:flex items-start justify-between">
         <div className="  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16  ">
-          <div className="text-lg font-normal mb-6 flex flex-col text-[10px] gap-2 leading-8">
+          <div className="text-xs font-normal mb-6 flex flex-col gap-2 leading-8">
           {/* 1ST Section */}
           <h3 >FIND A STORE</h3>
             <h3 >BECOME A MEMBER</h3>
