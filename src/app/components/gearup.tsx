@@ -1,11 +1,6 @@
 // components/BestOfAirMax.js
 import Image from 'next/image';
 
-const products = [
-    { id: 1, name: 'Nike Air Max Pulse', price: '₹ 13 995', image: '/AirMaxSec/1.png', category: "Women's Shoes" },
-    { id: 2, name: 'Nike Air Max Pulse', price: '₹ 13 995', image: '/AirMaxSec/2.png', category: "Men's Shoes" },
-    { id: 3, name: 'Nike Air Max 97 SE', price: '₹ 16 995', image: '/AirMaxSec/3.png', category: "Men's Shoes" },
-];
 
 const mens = [
     { id: 1, name: 'Nike Dri-FIT ADV TechKnit Ultra', price: '₹ 3 895', image: '/gearup/men1.png', category: "Men's Short-Sleeve Running Top" },
@@ -36,7 +31,7 @@ const GearUp = () => {
                 <div className='md:flex md:gap-4'>
                     <div className='flex flex-col gap-4'>
                         <div className="flex">
-                            <div className="ml-auto"><div className='flex gap-2 right-2 '><p>Shop Men's</p>
+                            <div className="ml-auto"><div className='flex gap-2 right-2 '><p>Shop Men&apos;s</p>
                                 <img className='h-6' src="./left_btn.png" alt="" />
                                 <img className='h-6' src="./right_btn.png" alt="" />
                             </div>
@@ -65,7 +60,7 @@ const GearUp = () => {
 
                         <div className='flex flex-col gap-4'>
                         <div className="flex">
-                            <div className="ml-auto"><div className='flex gap-2 right-2 '><p>Shop Women's</p>
+                            <div className="ml-auto"><div className='flex gap-2 right-2 '><p>Shop Women&apos;s</p>
                                 <img className='h-6' src="./left_btn.png" alt="" />
                                 <img className='h-6' src="./right_btn.png" alt="" />
                             </div>
