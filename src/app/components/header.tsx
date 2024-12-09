@@ -16,7 +16,7 @@ const header = () => {
                     <p>|</p>
                 </div>
                 <div className='flex items-center gap-[15.38px] '>
-                    <p>Join Us</p>
+                    <Link href="/signup"><p>Join Us</p></Link>
                     <p>|</p>
                 </div>
                 <div className='flex items-center gap-[15.38px] '>

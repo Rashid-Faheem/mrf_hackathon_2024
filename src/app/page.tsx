@@ -15,10 +15,10 @@ export default function Home() {
   < HeroSection />
   < BestOfAirMax />
   < Featured />
-  <GearUp />
-  <Dontmiss />
-  <EssentialsSection />
-  <Links />
+  < GearUp />
+  < Dontmiss />
+  < EssentialsSection />
+  < Links />
   
 </div>
 </div>
