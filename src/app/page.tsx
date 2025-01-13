@@ -1,11 +1,11 @@
 import Image from "next/image";
-import HeroSection from "./components/hero";
-import BestOfAirMax from "./components/airMax";
-import Featured from "./components/featured";
-import GearUp from "./components/gearup";
-import Dontmiss from "./components/dontmiss";
-import EssentialsSection from "./components/essentials";
-import Links from "./components/links";
+import HeroSection from "../components/hero";
+import BestOfAirMax from "../components/airMax";
+import Featured from "../components/featured";
+import GearUp from "../components/gearup";
+import Dontmiss from "../components/dontmiss";
+import EssentialsSection from "../components/essentials";
+import Links from "../components/links";
 
 export default function Home() {
   return (

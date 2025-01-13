@@ -8,7 +8,8 @@ const header = () => {
             <img src="./icon1.png" alt="Jordan Logo" className="h-6" />
             <div className='flex items-center gap-[15.38px]'>
                 <div className='flex items-center gap-[15.38px] '>
-                    <p>Find a Store</p>
+                    
+                    <Link href={"/carouselpage"}><p>Find a Store</p></Link>
                     <p>|</p>
                 </div>
                 <div className='flex items-center gap-[15.38px] '>
