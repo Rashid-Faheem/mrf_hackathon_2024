@@ -35,8 +35,9 @@ export default function RootLayout({
       <body className={`${inter.className} ${Helvetica.variable } ${HelveticaBold.variable}`  } >
         <Header />
         {children}
-        </body>
+       
         <Footer />
+        </body>
     </html>
   );
 }

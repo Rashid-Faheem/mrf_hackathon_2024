@@ -1,4 +1,5 @@
-import Image from "next/image";
+'use client'
+
 import HeroSection from "../components/hero";
 import BestOfAirMax from "../components/airMax";
 import Featured from "../components/featured";

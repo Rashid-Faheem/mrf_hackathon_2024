@@ -15,6 +15,7 @@ const HeroSection = () => {
           <Image
             src="/hero-image.png"
             alt="Nike Air Max Pulse"
+            priority={false}
             width={1750}            
             height={900}            
             

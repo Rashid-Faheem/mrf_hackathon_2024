@@ -1,4 +1,5 @@
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin  } from "react-icons/fa";
+
+// import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin  } from "react-icons/fa";
 
 import React from 'react'
 
@@ -46,17 +47,17 @@ const footer = () => {
         </div>
          {/* SOCIAL Section */}
         <div className="flex gap-4 h-3">
-    <img src="./twitter.png" alt="" />
-    <img src="./facebook.png" alt="" />
-    <img src="./youtube.png" alt="" />
-    <img src="./instagram.png" alt="" />
+    <img src="../twitter.png" alt="" />
+    <img src="../facebook.png" alt="" />
+    <img src="../youtube.png" alt="" />
+    <img src="../instagram.png" alt="" />
   </div> 
         </div>
         {/* next div Section */}
 
 <div className="flex justify-between text-[10px] text-[#7E7E7E] py-4">
 <div className="flex gap-2">
-  <img src="./ind.png" alt="" />
+  <img src="../ind.png" alt="" />
 <h3>© 2023 NIKE, Inc. All Rights Reserved</h3>
 </div>
 <div className="flex gap-4">
@@ -68,6 +69,7 @@ const footer = () => {
 </div>
 
       </footer>
+
   )
 }
 
