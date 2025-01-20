@@ -5,7 +5,7 @@ const header = () => {
   return (
     <div>
         <div className='hidden sm:flex font-helvetica font-medium text-[12px] items-center justify-between px-12 py-4 bg-[#F5F5F5]'>
-            <img src="../icon1.png" alt="Jordan Logo" className="h-6" />
+            <img src="/icon1.png" alt="Jordan Logo" className="h-6" />
             <div className='flex items-center gap-[15.38px]'>
                 <div className='flex items-center gap-[15.38px] '>
                     
@@ -28,7 +28,7 @@ const header = () => {
          <header className="flex items-center justify-between px-12 py-4 bg-white shadow-md">
       {/* Left: Logos */}
       <div className="flex items-center space-x-4">
-        <Link href="/"><img src="../logo.png" alt="Nike Logo" className="h-6" /></Link>
+        <Link href="/"><img src="/logo.png" alt="Nike Logo" className="h-6" /></Link>
       </div>
 
       {/* Center: Navigation Links */}
@@ -42,13 +42,13 @@ const header = () => {
         <Link href="/products/women">
           <div className="hover:underline">Women</div>
         </Link>
-        <Link href="/kids">
+        <Link href="/products/kids">
           <div className="hover:underline">Kids</div>
         </Link>
-        <Link href="/sale">
+        <Link href="/products/sale">
           <div className="hover:underline">Sale</div>
         </Link>
-        <Link href="/snkrs">
+        <Link href="/products/snkrs">
           <div className="hover:underline">SNKRS</div>
         </Link>
       </nav>
@@ -56,15 +56,17 @@ const header = () => {
       {/* Right: Search, Favorites, and Cart */}
       <div className="hidden lg:flex items-center space-x-4">
         <div className='flex items-center gap-2 rounded-full border px-3 py-2 bg-[#F5F5F5]'>
-          <img src="../search.png" alt="Search" className="h-5 cursor-pointer" />
+          <img src="/search.png" alt="Search" className="h-5 cursor-pointer" />
         <input 
           type="text"
           placeholder="Search" 
           className="px-2 py-1 bg-[#F5F5F5]  rounded-full text-sm focus:outline-none "
           />
           </div>
-        <img src="../Wishlist.png" alt="Favorites" className="h-5 cursor-pointer" />
-        <img src="../cart.png" alt="Cart" className="h-5 cursor-pointer" />
+        <img src="/Wishlist.png" alt="Favorites" className="h-5 cursor-pointer" />
+        <Link href="/cart">
+        <img src="/cart.png" alt="Cart" className="h-5 cursor-pointer" />
+        </Link>
       </div>
 
       {/* Mobile Menu Button */}

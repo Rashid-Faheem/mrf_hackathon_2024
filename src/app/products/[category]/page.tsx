@@ -1,72 +1,85 @@
 'use client'
-/*
-import { useRouter } from 'next/router';
-import ProductCard from '../../../components/ProductCard';
-
-const product = [
-  { id: 1, category: 'men', name: "Nike Air Max", price: "₹8,995", image: "/air-max.jpg" },
-  { id: 2, category: 'women', name: "Nike Pegasus", price: "₹6,495", image: "/pegasus.jpg" },
-  { id: 3, category: 'men', name: "Nike Zoom", price: "₹10,495", image: "/zoom.jpg" },
-  { id: 4, category: 'women', name: "Nike Revolution", price: "₹4,995", image: "/revolution.jpg" },
-];
-
-const products = () => {
-  const router = useRouter();
-  const { category } = router.query;
-
-  // Filter products based on category
-  const filteredProducts = product.filter((product) => product.category === category);
-
-  return (
-    <div>
-      <div className="p-4">
-        <h1 className="text-2xl font-bold capitalize">{category}'s Products</h1>
-        <div className="grid grid-cols-3 gap-4 mt-4">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))
-          ) : (
-            <p>No products found for {category}.</p>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default products;
-
-*/
-
 import React from 'react'
 import {  useParams  } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
+import { client } from '@/sanity/lib/client';
+import Link from 'next/link';
+import IProduct from '@/types/product';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 
-const product = [
-  { id: 1, category: 'men', name: "Nike Air Max", price: "₹8,995", image: "/AirMaxSec/1.png" },
-  { id: 2, category: 'women', name: "Nike Pegasus", price: "₹6,495", image: "/AirMaxSec/2.png" },
-  { id: 3, category: 'men', name: "Nike Zoom", price: "₹10,495", image: "/AirMaxSec/3.png" },
-  { id: 4, category: 'women', name: "Nike Revolution", price: "₹4,995", image: "/AirMaxSec/1.png" },
-];
 
-const CategoryPage = () => {
+const CategoryPage = async () => {
   const { category } = useParams();
-  const filteredProducts  = category == 'all' ? product : product.filter((product) => product.category === category);
- 
-  console.log(category); 
+  const category1 = category == 'all' ? "" : category;
+
+const product = await client.fetch(`*[_type == "product" && category match "${category1}*"] | order(_createdAt desc)
+{
+  _id,
+    "image": image.asset->url,
+    status,
+      name,
+    category,
+    "colorCount": count(colors),
+    colors,
+    price,
+    "slug":slug.current,
+    description
+
+}`); 
+const filteredProducts = product;
+const notify = () => toast.success('Product Added to Cart!', {
+  position: "top-right",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: false,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light",
+  transition: Bounce,
+  });
+const handleClick = (product: IProduct) => {
+  const cart = JSON.parse(localStorage.getItem('cart') || '{}');
+  if (cart[product.name]) {
+    cart[product.name] = {
+      ...cart[product.name],
+      quantity: cart[product.name].quantity + 1,
+    };
+  } else {
+    cart[product.name] = { ...product, quantity: 1 };
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  notify();
+  
+};
   return (
     <div>
     <div className="p-4">
       <h1 className="text-2xl font-bold capitalize">{category}'s Products</h1>
-      <div className="grid grid-cols-3 gap-4 mt-4">
+      <div className="grid grid-cols-1  sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
         {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          filteredProducts.map((product:IProduct) => (
+            <div key={product._id}>
+
+            <Link href={`/products/${category}/${product.slug}`} key={product._id}>
+                <ProductCard key={product._id} product={product} />
+                
+            </Link>
+            <button onClick={() => handleClick(product)} className=" block w-full mx-auto mt-1 bg-black text-white px-4 py-2 rounded opacity-60 hover:opacity-100 transition-opacity duration-300">
+            Add to Cart
+            </button>
+            
+            </div>
+            
           ))
         ) : (
           <p>No products found for {category}.</p>
         )}
+
+<ToastContainer/>
+
+
       </div>
     </div>
   </div>
