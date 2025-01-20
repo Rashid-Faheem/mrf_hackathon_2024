@@ -1,6 +1,7 @@
 
 // import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin  } from "react-icons/fa";
 
+import Image from 'next/image'
 import React from 'react'
 
 const footer = () => {
@@ -47,10 +48,10 @@ const footer = () => {
         </div>
          {/* SOCIAL Section */}
         <div className="flex gap-4 h-3">
-    <img src="../twitter.png" alt="" />
-    <img src="../facebook.png" alt="" />
-    <img src="../youtube.png" alt="" />
-    <img src="../instagram.png" alt="" />
+    <Image src="/twitter.png" alt="" width={12} height={5} />
+    <Image src="/facebook.png" alt="" width={12} height={5} />
+    <Image src="/youtube.png" alt="" width={12} height={5} />
+    <Image src="/instagram.png" alt="" width={12} height={5} />
   </div> 
         </div>
         {/* next div Section */}

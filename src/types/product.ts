@@ -1,4 +1,4 @@
-export default interface IProduct {
+ interface IProduct {
     _id : string;
     status : string;
     image: string;
@@ -10,3 +10,5 @@ export default interface IProduct {
     description : string;
     quantity : number
   }
+
+  export default IProduct;
