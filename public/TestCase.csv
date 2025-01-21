@@ -1,0 +1,6 @@
+Test Case ID,Description,Steps,Expected Result,Actual Result,Status
+TC001,Validate Product Listing,Open product page > Verify products,Products should be displayed correctly,Products displayed correctly,OK
+TC002,Add to Cart Functionality,"Click ""Add to Cart"" > Check cart",Product should be added to cart,Product added successfully,OK
+TC003,Add to Wishlist,"Click ""Add to Wishlist"" > WishlistPage",Product should be added to Wishlist,Product added successfully,OK
+TC004,Remove from Wishlist,"Click ""Remove"" > WishlistPage",Product should be removed to Wishlist,Product removed successfully,OK
+TC005,Check Checkout Process,Fill form > Submit order,Order should be placed successfully,Order placed successfully,OK
