@@ -8,7 +8,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 
     return (
       <div className="border rounded-md shadow px-2 pt-2 pb-1">
-        <Image src={product.image} alt={product.name} className="mb-4" />
+        <Image src={product.image} alt={product.name} className="mb-4" width={260} height={300} />
            <div className="p-4">
            <p className="text-red-500 font-semibold text-sm">{product.status}</p>
            <h2 className="text-lg font-bold text-gray-900">{product.name}</h2>

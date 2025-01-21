@@ -14,6 +14,39 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<IProduct | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const handleWishlist = (product: IProduct) => {
+    const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+
+    const isAlreadyInWishlist = wishlist.some((item: IProduct) => item._id === product._id);
+    if (!isAlreadyInWishlist) {
+      wishlist.push(product);
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      toast.success('Added to Wishlist!',
+        { position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    } else {
+      toast.info('Already in Wishlist',
+        { position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
+  };
+
   // 🟢 useEffect کے ذریعے async function call کریں
   useEffect(() => {
     const fetchProduct = async () => {
@@ -115,6 +148,12 @@ export default function ProductDetailPage() {
           >
             Add to Cart
           </button>
+          <button
+  onClick={() => handleWishlist(product)}
+  className="mt-4 bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition w-full md:w-auto"
+>
+  Add to Wishlist
+</button>
         </div>
       </div>
 
