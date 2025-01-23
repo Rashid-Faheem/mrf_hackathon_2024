@@ -1,5 +1,7 @@
 "use client"
 import IProduct from "@/types/product";
+import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 
@@ -71,7 +73,8 @@ const CartPage = () => {
         ) : (
           cartItems.map((item:IProduct) => (
             <div key={item.name} className="flex items-start border-b py-6">
-              <img src={item.image} alt={item.name} className="w-24 h-24 object-cover rounded-md" />
+              <Image src={item.image} alt={item.name} width={100} height={100} className="object-cover rounded-md" />
+              {/* <img src={item.image} alt={item.name} className="w-24 h-24 object-cover rounded-md" /> */}
 
               <div className="ml-4 flex-1">
                 <h2 className="text-lg font-semibold">{item.name}</h2>
@@ -107,7 +110,7 @@ const CartPage = () => {
       </div>
 
       {/* Right: Order Summary */}
-      <div className="w-full md:w-1/3 bg-white p-6 shadow-md rounded-lg">
+      <div className="w-full md:w-1/3 h-[300px] bg-white p-6 shadow-md rounded-lg flex flex-col ">
         <h2 className="text-xl font-bold mb-4">Summary</h2>
         <div className="flex justify-between text-gray-600 mb-2">
           <span>Subtotal</span>
@@ -121,9 +124,9 @@ const CartPage = () => {
           <span>Total</span>
           <span>₹ {totalPrice.toLocaleString()}</span>
         </div>
-        <button className="mt-6 w-full bg-black text-white py-3 rounded-lg text-center text-lg font-semibold">
+        <Link href="/checkout" className="mt-6 w-full bg-black text-white py-3 rounded-lg text-center text-lg font-semibold">
           Member Checkout
-        </button>
+        </Link>
       </div>
       <ToastContainer />
     </div>

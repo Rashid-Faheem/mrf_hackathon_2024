@@ -14,8 +14,8 @@ const BestOfAirMax = () => {
         <div className='flex justify-between'>
         <h2 className="text-sm sm:text-lg lg:text-2xl font-bold mb-8">Best of Air Max</h2>
         <div className='flex gap-2'><p>Shop</p>
-        <img className='h-6' src="./left_btn.png" alt="" />
-        <img className='h-6' src="./right_btn.png" alt="" />
+        <Image width={24} height={16} className='h-6' src="/left_btn.png" alt="" />
+        <Image width={24} height={16} className='h-6' src="/right_btn.png" alt="" />
         </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

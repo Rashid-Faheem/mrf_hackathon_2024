@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -30,12 +31,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const pathname = usePathname();
+  // const noLayoutPages = ["/signin", "/signup"];
+
   return (
     <html lang="en">
       <body className={`${inter.className} ${Helvetica.variable } ${HelveticaBold.variable}`  } >
-        <Header />
+          {/* {!noLayoutPages.includes(pathname) && <Header />} */}
+          <Header />
         {children}
        
+        {/* {!noLayoutPages.includes(pathname) && <Footer />} */}
         <Footer />
         </body>
     </html>

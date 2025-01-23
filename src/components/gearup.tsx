@@ -32,8 +32,9 @@ const GearUp = () => {
                     <div className='flex flex-col gap-4'>
                         <div className="flex">
                             <div className="ml-auto"><div className='flex gap-2 right-2 '><p>Shop Men&apos;s</p>
-                                <img className='h-6' src="./left_btn.png" alt="" />
-                                <img className='h-6' src="./right_btn.png" alt="" />
+                                <Image width={24} height={16} className='h-6' src="/left_btn.png" alt="" />
+                                <Image width={24} height={16} className='h-6' src="/right_btn.png" alt="" />
+                                
                             </div>
                             </div>
                         </div>
@@ -61,8 +62,9 @@ const GearUp = () => {
                         <div className='flex flex-col gap-4'>
                         <div className="flex">
                             <div className="ml-auto"><div className='flex gap-2 right-2 '><p>Shop Women&apos;s</p>
-                                <img className='h-6' src="./left_btn.png" alt="" />
-                                <img className='h-6' src="./right_btn.png" alt="" />
+                                <Image width={24} height={16} className='h-6' src="/left_btn.png" alt="" />
+                                <Image width={24} height={16} className='h-6' src="/right_btn.png" alt="" />
+                                        
                             </div>
                             </div>
                         </div>

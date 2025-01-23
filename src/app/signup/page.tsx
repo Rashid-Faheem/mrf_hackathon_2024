@@ -1,20 +1,79 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 import Image from 'next/image'
+import { useRouter } from 'next/navigation';
+import { client } from '@/sanity/lib/client';
 
+import bcrypt from 'bcryptjs';
 
 const Signup = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    
+  });
+
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      // Check if user already exists in Sanity
+      const query = `*[_type == "user" && email == $email][0]`;
+      console.log(query);
+      const existingUser = await client.fetch(query, { email: formData.email });
+
+      if (existingUser) {
+        alert("User already exists!");
+        setLoading(false);
+        return;
+      }
+
+      // Hash the password before storing
+      const hashedPassword = await   bcrypt.hash(formData.password, 10);
+      console.log(hashedPassword);
+      // Create new user in Sanity
+      const newUser = await client.create({
+        _type: "user",
+        fullName: formData.fullName,
+        email: formData.email,
+        password: hashedPassword, // Store hashed password
+        orders: [],
+      });
+
+      console.log("New user created:", newUser);
+
+      alert("Signup successful!");
+      router.push("/dashboard"); // Redirect after signup
+    } catch (error) {
+      console.error("Signup failed:", error);
+      alert("Signup failed, try again!");
+    }
+
+    setLoading(false);
+  };
+  
   return (
     <div>
 
     <div className="flex items-center justify-center font-helvetica p-7">
-      <div className="w-full max-w-[380px] p-8 items-center space-y-6 flex flex-col bg-white ">
-        <img className="mx-auto h-5 w-auto" src="./logo.png" alt="" />
+      <div className="w-full max-w-[480px] md:p-4 md:px-5 items-center space-y-6 flex flex-col bg-white ">
+        <Image className="mx-auto h-5 w-auto" src="/logo.png" alt="Jordan Logo" width={100} height={100} />
+        {/* <img className="mx-auto h-5 w-auto" src="./logo.png" alt="" /> */}
         <h2 className="text-sm font-bold font-helveticaBold text-center w-7/12 sm:text-lg">
         BECOME A NIKE MEMBER
         </h2>
-        <form className="mt-12 space-y-6">
+        {/* <form className="mt-12 space-y-6">
           <input
             type="email"
             placeholder="Email address"
@@ -90,7 +149,16 @@ const Signup = () => {
           >
             JOIN US
           </button>
-        </form>
+        </form> */}
+
+        <form  className="space-y-4">
+        <input type="text" name="fullName" placeholder="Full Name" required className="w-full p-3 border rounded-md" onChange={handleChange} />
+        <input type="email" name="email" placeholder="Email" required className="w-full p-3 border rounded-md" onChange={handleChange} />
+        <input type="password" name="password" placeholder="Password" required className="w-full p-3 border rounded-md" onChange={handleChange} />
+        <button type="submit" onClick={handleSubmit} className="w-full bg-black text-white py-3 rounded-md font-semibold">
+          {loading ? "Signing up..." : "Sign Up"}
+        </button>
+      </form>
 
         <p className="text-sm text-center text-gray-600">
         Already a Member?

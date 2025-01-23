@@ -1,10 +1,18 @@
-
+'use client'
 // import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin  } from "react-icons/fa";
 
 import Image from 'next/image'
+import { usePathname } from 'next/navigation';
 import React from 'react'
 
-const footer = () => {
+const Footer = () => {
+  const pathname = usePathname();
+  const noLayoutPages = ["/signin", "/signup"];
+  console.log(pathname)
+  if (pathname === "/signin" || pathname === "/signup") {
+    return null;
+  }
+  
   return (
     <footer className="bg-black text-white pt-10 font-helvetica px-12">
       <div className="lg:flex items-start justify-between">
@@ -58,7 +66,7 @@ const footer = () => {
 
 <div className="flex justify-between text-[10px] text-[#7E7E7E] py-4">
 <div className="flex gap-2">
-  <img src="../ind.png" alt="" />
+  <Image width={24} height={16} src="/ind.png" alt="" />
 <h3>© 2023 NIKE, Inc. All Rights Reserved</h3>
 </div>
 <div className="flex gap-4">
@@ -74,4 +82,4 @@ const footer = () => {
   )
 }
 
-export default footer
+export default Footer

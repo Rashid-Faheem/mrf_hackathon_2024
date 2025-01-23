@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -6,7 +7,8 @@ const SignIn = () => {
     <div>
       <div className="flex items-center justify-center font-helvetica p-7">
       <div className="w-full max-w-[380px] p-8 items-center space-y-6 flex flex-col bg-white ">
-        <img className="mx-auto h-5 w-auto" src="./logo.png" alt="" />
+        <Image className="mx-auto h-5 w-auto" src="/logo.png" alt="Jordan Logo" width={100} height={100} />
+        {/* <img className="mx-auto h-5 w-auto" src="./logo.png" alt="" /> */}
         <h2 className="text-sm font-bold font-helveticaBold text-center w-7/12 sm:text-lg">
         YOUR ACCOUNT FOR EVERYTHING NIKE
         </h2>
