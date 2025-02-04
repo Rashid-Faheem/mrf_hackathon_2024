@@ -6,6 +6,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import AuthProvider from "@/Context/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,6 +37,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+       <AuthProvider>
       <body className={`${inter.className} ${Helvetica.variable } ${HelveticaBold.variable}`  } >
           {/* {!noLayoutPages.includes(pathname) && <Header />} */}
           <Header />
@@ -44,6 +46,7 @@ export default function RootLayout({
         {/* {!noLayoutPages.includes(pathname) && <Footer />} */}
         <Footer />
         </body>
+        </AuthProvider>
     </html>
   );
 }

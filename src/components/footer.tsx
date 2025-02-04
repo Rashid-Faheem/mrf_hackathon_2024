@@ -8,7 +8,7 @@ import React from 'react'
 const Footer = () => {
   const pathname = usePathname();
   const noLayoutPages = ["/signin", "/signup"];
-  console.log(pathname)
+  //console.log(pathname)
   if (pathname === "/signin" || pathname === "/signup") {
     return null;
   }

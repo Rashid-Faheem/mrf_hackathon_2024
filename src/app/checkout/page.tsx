@@ -1,13 +1,21 @@
-"use client"
+
+
+
+"use client";
+import { client  as  sanityClient } from "@/sanity/lib/client";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import { nanoid } from "nanoid";
+import { v4 } from "uuid";
+
 const Checkout = () => {
   interface CartItem {
     name: string;
     price: number;
     quantity: number;
   }
-  
+
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [formData, setFormData] = useState({
@@ -20,33 +28,82 @@ const Checkout = () => {
   });
 
   const router = useRouter();
-
-  // Load cart items from localStorage
+  const { data: session } = useSession();
+const userId = session?.user?._id; // Get logged-in user's ID
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "{}") ;
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "{}");
     const itemsArray = Object.values(storedCart) as CartItem[];
     setCartItems(itemsArray);
 
-    // Calculate total price
     const total = itemsArray.reduce((acc, item) => acc + item.price * item.quantity, 0);
     setTotalPrice(total);
   }, []);
 
   // Handle form changes
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   // Handle order submission
-  const handleSubmit = (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    alert("Order placed successfully!");
-    console.log(formData);
-    console.log(cartItems);
-   // localStorage.removeItem("cart"); // Clear cart after checkout
-    router.push("/OrderConfirmation");
-  };
+  
+    if (!userId) {
+      alert("You must be logged in to place an order.");
+      return;
+    }
+    const orderNumber = `ORD-${nanoid(6)}`;
+    
 
+    try {
+      // Step 1: Create Order in Sanity
+      const orderResponse = await sanityClient.create({
+        _type: "order",
+        user: { _type: "reference", _ref: userId }, // Use actual user ID
+        orderId: orderNumber,
+        items: cartItems.map((item) => ({
+          _key: nanoid(),
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+        totalPrice,
+        status: "Pending",
+        createdAt: new Date().toISOString(),
+      });
+  
+      console.log("Order created:", orderResponse);
+  
+      // Step 2: Create Shipment Tracking
+      // const shipmentResponse = await sanityClient.create({
+      //   _type: "shipmentTracking",
+      //   order: { _type: "reference", _ref: orderResponse._id }, // Reference Order ID
+      //   trackingNumber: `TRK-${Math.floor(100000 + Math.random() * 900000)}`,
+      //   carrier: "SELF",
+      //   status: "In Transit",
+      //   estimatedDelivery: new Date(new Date().setDate(new Date().getDate() + 5)).toISOString(),
+      //   updatedAt: new Date().toISOString(),
+      // });
+      // console.log("Shipment tracking created:", shipmentResponse);
+
+      // const updatedOrderResponse = await sanityClient.patch(orderResponse._id) // Use the order ID to patch the document
+      // .set({
+      //   shipment: { _type: "reference", _ref: shipmentResponse._id }, // Add the shipment reference to the order
+      // })
+      // .commit();
+      // console.log("Order updated with shipment reference:", updatedOrderResponse);
+
+      
+      
+  
+      alert("Order placed successfully!");
+      localStorage.removeItem("cart"); // Clear cart after checkout
+      router.push("/OrderConfirmation");
+    } catch (error) {
+      console.error("Error creating order or shipment:", error);
+      alert("Failed to place order. Please try again.");
+    }
+  };
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">Checkout</h1>

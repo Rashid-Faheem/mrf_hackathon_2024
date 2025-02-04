@@ -10,6 +10,11 @@ const order = {
         to: [{ type: "user" }], // Reference to User
       },
       {
+        name: "orderId",
+        title: "Order ID",
+        type: "string",
+      },
+      {
         name: "items",
         title: "Ordered Items",
         type: "array",

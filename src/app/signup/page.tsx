@@ -48,6 +48,7 @@ const Signup = () => {
         fullName: formData.fullName,
         email: formData.email,
         password: hashedPassword, // Store hashed password
+        provider: "credentials",
         orders: [],
       });
 

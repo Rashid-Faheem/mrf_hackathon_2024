@@ -39,7 +39,16 @@ const user = {
         title: "password",
         type: "string",
       },
-      
+      {
+        name: "provider",
+        type: "string",
+        title: "Auth Provider"
+      },
+      {
+        title: 'Admin User',
+        name: 'isAdmin',
+        type: 'boolean',
+      },
       {
         name: "orders",
         title: "Orders",
